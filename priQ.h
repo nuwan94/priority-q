@@ -35,7 +35,7 @@ void insert(pqEntry x, priQ *q){
         if (np ==NULL){
             printf(" PQ001 : Not enough memory");
             q->full = true;
-        }else{
+        } else {
             np->entry = x;
             np->next = NULL;
 
@@ -116,8 +116,7 @@ void printpriQ(const priQ *q){
                 break;
         }
         printf("\t| Size : %d\n",priQSize(q));
-    }else{
+    } else {
         printf("\n PQ003 : Cannot display empty queue.\n\n");
     }
-
 }
