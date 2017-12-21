@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1513724132 source:d:\projects\codeblocks\dsa\priorityq\main.c
+1513895946 source:d:\projects\codeblocks\dsa\priorityq\main.c
 	<stdio.h>
 	<stdlib.h>
 	<stdbool.h>
 	"priQ.h"
 
-1513888901 d:\projects\codeblocks\dsa\priorityq\priq.h
+1513891656 d:\projects\codeblocks\dsa\priorityq\priq.h
 	<stdlib.h>
 	<stdbool.h>
 

@@ -33,7 +33,7 @@ void insert(pqEntry x, priQ *q){
     pQnode *np;
     np = (pQnode *)malloc(sizeof(pQnode));
         if (np ==NULL){
-            printf(" PQ001 : Not enough memory");
+            priQError(0);
             q->full = true;
         } else {
             np->entry = x;
@@ -52,7 +52,7 @@ void insert(pqEntry x, priQ *q){
 void removeMax(pqEntry *x,priQ *q){
     pQnode *maxN,*current,*prevMaxN;
     if (isPriQueueEmpty(q))
-        printf(" PQ002 : Cannot remove from empty queue.\n");
+        priQError(1);
     else{
         if(q->front->next != NULL){
             prevMaxN = NULL;
@@ -64,13 +64,15 @@ void removeMax(pqEntry *x,priQ *q){
                 }
                 current = current->next;
             }
-            if(prevMaxN!=NULL){
+
+            if(prevMaxN!=NULL)
                 prevMaxN->next = maxN->next;
-            }else {
-                if(maxN->next==NULL)
-                    q->rear = prevMaxN;
+            else
                 q->front = maxN->next;
-            }
+
+            if(maxN->next==NULL)
+                    q->rear = prevMaxN;
+
             *x = maxN->entry;
         }else{
             maxN = q->front;
@@ -86,7 +88,7 @@ void serve(pqEntry *x, priQ *q){
     pQnode *np;
 
     if (isPriQueueEmpty(q))
-        printf(" PQ002 : Cannot remove from empty queue.\n");
+        priQError(1);
     else{
         q->count--;
         *x = q->front->entry;
@@ -117,6 +119,15 @@ void printpriQ(const priQ *q){
         }
         printf("\t| Size : %d\n",priQSize(q));
     } else {
-        printf("\n PQ003 : Cannot display empty queue.\n\n");
+        priQError(1);
+    }
+}
+
+void priQError(int err){
+    switch(err){
+        case 0:
+            printf("\n PQ000 : Not enough memory.\n\n");
+        case 1:
+            printf("\n PQ001 : Queue is empty.\n\n");
     }
 }
